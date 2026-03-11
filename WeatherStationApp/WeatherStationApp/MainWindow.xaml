@@ -1,0 +1,192 @@
+<Window x:Class="WeatherStationApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        Title="Weather Station Comparison - Sherkin Island vs Roches Point"
+        Height="860" Width="1280" MinHeight="720" MinWidth="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F2F5">
+    <DockPanel>
+
+        <!-- menu bar - three items required by the brief -->
+        <Menu DockPanel.Dock="Top" Height="28" Background="#2C3E50">
+            <Menu.Resources>
+                <Style TargetType="MenuItem">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#2C3E50"/>
+                    <Setter Property="Padding" Value="14,4"/>
+                    <Setter Property="FontSize" Value="13"/>
+                </Style>
+            </Menu.Resources>
+            <MenuItem Header="Load Stations"    Click="MenuLoadStations_Click"/>
+            <MenuItem Header="Plot Stations"    Click="MenuPlot_Click"/>
+            <MenuItem Header="Exit Application" Click="MenuExit_Click"/>
+        </Menu>
+
+        <!-- status bar -->
+        <StatusBar DockPanel.Dock="Bottom" Height="26" Background="#2C3E50">
+            <StatusBarItem>
+                <TextBlock x:Name="TbStatus"
+                           Text="Ready - click Load Stations to begin."
+                           Foreground="White" FontSize="11"/>
+            </StatusBarItem>
+        </StatusBar>
+
+        <!-- 3-row grid: top controls, main chart, range chart -->
+        <Grid Margin="10,8,10,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- row 0: sherkin | roches | buttons+slider -->
+            <Grid Grid.Row="0" Margin="0,0,0,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="185"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- sherkin island panel -->
+                <Border Grid.Column="0" Margin="0,0,5,0"
+                        Background="White" BorderBrush="#D0D0D0"
+                        BorderThickness="1" CornerRadius="4">
+                    <StackPanel Margin="10,8,10,10">
+                        <!-- brief: Place Sherkin Station in a label above the list box -->
+                        <TextBlock Text="Sherkin Station"
+                                   FontWeight="Bold" FontSize="13"
+                                   Foreground="#2C3E50"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,5"/>
+                        <ListBox x:Name="ListBox1" Height="105"
+                                 MouseDoubleClick="ListBox1_MouseDoubleClick"
+                                 BorderBrush="#E0E0E0" BorderThickness="1"
+                                 FontSize="12"/>
+                        <!-- brief: show selected parameter in a label -->
+                        <StackPanel Orientation="Horizontal" Margin="0,7,0,0">
+                            <TextBlock Text="Parameter: " FontWeight="Bold"
+                                       FontSize="11" Foreground="#444"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock x:Name="LblSherkinParam"
+                                       Text="(none)" FontStyle="Italic" FontSize="11"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- roches point panel -->
+                <Border Grid.Column="1" Margin="5,0,5,0"
+                        Background="White" BorderBrush="#D0D0D0"
+                        BorderThickness="1" CornerRadius="4">
+                    <StackPanel Margin="10,8,10,10">
+                        <TextBlock Text="Roches Point Station"
+                                   FontWeight="Bold" FontSize="13"
+                                   Foreground="#2C3E50"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,5"/>
+                        <ListBox x:Name="ListBox2" Height="105"
+                                 MouseDoubleClick="ListBox2_MouseDoubleClick"
+                                 BorderBrush="#E0E0E0" BorderThickness="1"
+                                 FontSize="12"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,7,0,0">
+                            <TextBlock Text="Parameter: " FontWeight="Bold"
+                                       FontSize="11" Foreground="#444"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock x:Name="LblRochesParam"
+                                       Text="(none)" FontStyle="Italic" FontSize="11"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- buttons, Count label and potentiometer (slider) -->
+                <Border Grid.Column="2" Margin="5,0,0,0"
+                        Background="White" BorderBrush="#D0D0D0"
+                        BorderThickness="1" CornerRadius="4">
+                    <StackPanel Margin="10,10,10,10">
+                        <Button x:Name="BtnLoadData" Content="Load Data"
+                                Height="32" Margin="0,0,0,6"
+                                Background="#2980B9" Foreground="White"
+                                BorderThickness="0" FontWeight="Bold"
+                                Cursor="Hand" Click="BtnLoadData_Click"/>
+                        <Button x:Name="BtnPlot" Content="Plot"
+                                Height="32" Margin="0,0,0,6"
+                                Background="#27AE60" Foreground="White"
+                                BorderThickness="0" FontWeight="Bold"
+                                Cursor="Hand" Click="BtnPlot_Click"/>
+                        <Button x:Name="BtnRange" Content="Range"
+                                Height="32" Margin="0,0,0,10"
+                                Background="#E67E22" Foreground="White"
+                                BorderThickness="0" FontWeight="Bold"
+                                Cursor="Hand" Click="BtnRange_Click"/>
+                        <Separator Background="#E0E0E0" Margin="0,0,0,8"/>
+                        <!-- brief: Count label starts at 1 -->
+                        <TextBlock Text="Count" FontWeight="Bold" FontSize="12"
+                                   Foreground="#2C3E50" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="LblCount" Text="1"
+                                   FontSize="28" FontWeight="Bold"
+                                   Foreground="#E67E22"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,2,0,4"/>
+                        <!-- slider = potentiometer, range 1 to max_element -->
+                        <Slider x:Name="SliderCount"
+                                Minimum="1" Maximum="1" Value="1"
+                                SmallChange="1" LargeChange="1"
+                                IsSnapToTickEnabled="True"
+                                TickFrequency="1"
+                                TickPlacement="BottomRight"
+                                ValueChanged="SliderCount_ValueChanged"/>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center" Margin="0,4,0,0">
+                            <TextBlock Text="1 - " FontSize="10" Foreground="#888"/>
+                            <TextBlock x:Name="LblMaxEl" Text="1"
+                                       FontSize="10" Foreground="#888"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- row 1: main chart - Series and Labels set from code behind as per slides -->
+            <Border Grid.Row="1" Margin="0,0,0,8"
+                    Background="White" BorderBrush="#D0D0D0"
+                    BorderThickness="1" CornerRadius="4">
+                <DockPanel Margin="10,8,10,8">
+                    <TextBlock x:Name="LblMainTitle"
+                               DockPanel.Dock="Top"
+                               Text="Parameter Chart - select parameters and press Plot"
+                               FontWeight="Bold" FontSize="13"
+                               Foreground="#2C3E50" Margin="0,0,0,4"/>
+                    <lvc:CartesianChart x:Name="mainChart" LegendLocation="Right">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis x:Name="mainAxisX" Title="Time"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis x:Name="mainAxisY" Title="Value"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                </DockPanel>
+            </Border>
+
+            <!-- row 2: range chart -->
+            <Border Grid.Row="2"
+                    Background="White" BorderBrush="#D0D0D0"
+                    BorderThickness="1" CornerRadius="4">
+                <DockPanel Margin="10,8,10,8">
+                    <TextBlock x:Name="LblRangeTitle"
+                               DockPanel.Dock="Top"
+                               Text="Range Chart - adjust Count and press Range"
+                               FontWeight="Bold" FontSize="13"
+                               Foreground="#2C3E50" Margin="0,0,0,4"/>
+                    <lvc:CartesianChart x:Name="rangeChart" LegendLocation="Right">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis x:Name="rangeAxisX" Title="Time"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis x:Name="rangeAxisY" Title="Value"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                </DockPanel>
+            </Border>
+
+        </Grid>
+    </DockPanel>
+</Window>
