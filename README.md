@@ -1,11 +1,19 @@
 # Interface Development — Weather Station Monitor
 
-> **Module:** Interface Software Development | **Level:** 8 | **Variant:** 16  
+> **Module:** Interface Software Development | **Level:** 8 | **Variant:** 16
 > **Author:** Alan O'Connell | **Student No:** R00243626 | **Institution:** Munster Technological University
 
 A WPF desktop application written in C# that reads, parses and compares weather data from two Met Éireann stations — **Sherkin Island** and **Roches Point** — displaying temperature, wind speed, and rainfall over a 12-hour period on an interactive chart.
 
-🌐 **[View Project Page (GitHub Pages)](https://alan64578.github.io/Interface-Dev-Weather-Monitor/)**
+---
+
+## Screenshots
+
+![Temperature Chart](docs/screenshots/screenshot-temperature.png)
+*Parameter Chart and Range Chart — Temperature comparison*
+
+![Wind Speed Chart](docs/screenshots/screenshot-speed.png)
+*Parameter Chart and Range Chart — Wind Speed comparison*
 
 ---
 
@@ -61,12 +69,13 @@ Interface-Dev-Weather-Monitor/
 │               ├── Roches Rainfall.txt
 │               └── Roches Time.txt
 │
-├── Docs/
-│   └── index.html          ← GitHub Pages project site
-│
-├── Data/
-│   ├── sherkin-island.csv  ← Raw Met Éireann data
-│   └── roches-point.csv
+├── docs/
+│   ├── OConnell Alan R00243626.pdf
+│   ├── sherkin-island.csv
+│   ├── roches-point.csv
+│   └── screenshots/
+│       ├── screenshot-temperature.png
+│       └── screenshot-speed.png
 │
 └── README.md
 ```
@@ -93,20 +102,17 @@ git clone https://github.com/Alan64578/Interface-Dev-Weather-Monitor.git
 1. Open `Versions/WeatherStationApp/WeatherStationApp.slnx` in **Visual Studio 2022**
 2. Ensure `LiveCharts.Wpf` (v0.9.7) is installed via NuGet
 3. Build and run (`F5`)
-4. The `SherkinWeatherData` and `RochesWeatherData` folders must be present alongside the executable (they are included in the repo)
+4. The `SherkinWeatherData` and `RochesWeatherData` folders must be present alongside the executable
 
 ---
 
 ## Data Source
 
-Raw observation data downloaded from:
 - https://www.met.ie/latest-reports/observations/download/sherkin-island
 - https://www.met.ie/latest-reports/observations/download/roches-point
-
-Raw CSV files are stored in the `Data/` folder of this repository.
 
 ---
 
 ## Disclaimer
 
-AI tools were used to help format and present this GitHub repository (README and GitHub Pages site). All project code and implementation were written manually by the author.
+AI tools were used to help format and present this GitHub repository (README). All project code and implementation were written manually by the author.
