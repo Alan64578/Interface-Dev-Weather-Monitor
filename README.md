@@ -1,8 +1,5 @@
 # Interface Development — Weather Station Monitor
 
-> **Module:** Interface Software Development | **Level:** 8 | **Variant:** 16
-> **Author:** Alan O'Connell | **Student No:** R00243626 | **Institution:** Munster Technological University
-
 A WPF desktop application written in C# that reads, parses and compares weather data from two Met Éireann stations — **Sherkin Island** and **Roches Point** — displaying temperature, wind speed, and rainfall over a 12-hour period on an interactive chart.
 
 ---
