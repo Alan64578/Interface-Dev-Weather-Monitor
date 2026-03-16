@@ -1,0 +1,28 @@
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\SherkinWeatherData\Sherkin Rainfall.txt
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\SherkinWeatherData\Sherkin Speed.txt
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\SherkinWeatherData\Sherkin Temperature.txt
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\SherkinWeatherData\Sherkin Time.txt
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\RochesWeatherData\Roches Rainfall.txt
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\RochesWeatherData\Roches Speed.txt
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\RochesWeatherData\Roches Temperature.txt
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\RochesWeatherData\Roches Time.txt
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\WeatherStation.exe
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\WeatherStation.deps.json
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\WeatherStation.runtimeconfig.json
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\WeatherStation.dll
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\bin\Debug\net8.0-windows\WeatherStation.pdb
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation_Content.g.cs
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation_MarkupCompile.cache
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation.g.resources
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation.AssemblyInfoInputs.cache
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation.AssemblyInfo.cs
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation.csproj.CoreCompileInputs.cache
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation.dll
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\refint\WeatherStation.dll
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation.pdb
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\WeatherStation.genruntimeconfig.cache
+C:\Users\alan-\source\repos\WeatherStation\WeatherStation\obj\Debug\net8.0-windows\ref\WeatherStation.dll
