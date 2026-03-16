@@ -11,8 +11,8 @@ A WPF desktop application written in C# that reads, parses and compares weather 
 | WPF layout — ListBoxes, labels, menu, buttons | ✅ Complete |
 | Load Data — scans folders, populates ListBoxes | ✅ Complete |
 | Double-click selection, Parameter label update | ✅ Complete |
-| Data extraction into SortedDictionary | 🔄 In Progress |
-| Plot button — LiveCharts dual-series chart | ⏳ Outstanding |
+| Data extraction into SortedDictionary | ✅ Complete |
+| Plot button — LiveCharts dual-series chart | ✅ Complete |
 | Range / Count / Slider — subset chart | ⏳ Outstanding |
 | Differences file output | ⏳ Outstanding |
 | Menu item wiring + error handling | ⏳ Outstanding |
@@ -25,6 +25,9 @@ A WPF desktop application written in C# that reads, parses and compares weather 
 - Scan `SherkinWeatherData` and `RochesWeatherData` folders and populate separate ListBoxes
 - Double-click a parameter in a ListBox to select it for extraction
 - Selected parameter name displayed in a label beneath each ListBox
+- Parse Time and parameter files into `SortedDictionary<DateTime, double>` for both stations
+- Plot button renders both station series on the same LiveCharts CartesianChart
+- Plot button enabled automatically once a parameter is selected in both ListBoxes
 - Menu bar with **[Load Stations]**, **[Plot Stations]**, and **[Exit Application]** options
 
 ---
