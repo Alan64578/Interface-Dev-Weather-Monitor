@@ -43,6 +43,44 @@ A WPF desktop application written in C# that reads, parses and compares weather 
 
 ---
 
+## Project Structure
+
+```
+Interface-Dev-Weather-Monitor/
+│
+├── WeatherStation/
+│   ├── WeatherStation.sln
+│   └── WeatherStation/
+│       ├── MainWindow.xaml
+│       ├── MainWindow.xaml.cs
+│       ├── App.xaml
+│       ├── App.xaml.cs
+│       ├── WeatherStation.csproj
+│       ├── SherkinWeatherData/
+│       │   ├── Sherkin Temperature.txt
+│       │   ├── Sherkin Speed.txt
+│       │   ├── Sherkin Rainfall.txt
+│       │   └── Sherkin Time.txt
+│       └── RochesWeatherData/
+│           ├── Roches Temperature.txt
+│           ├── Roches Speed.txt
+│           ├── Roches Rainfall.txt
+│           └── Roches Time.txt
+│
+├── docs/
+│   ├── OConnell Alan R00243626.pdf
+│   ├── Data/
+│   │   ├── sherkin-island.csv
+│   │   └── roches-point.csv
+│   └── Screenshots/
+│
+├── Versions/
+├── .gitignore
+└── README.md
+```
+
+---
+
 ## Running the Project
 
 1. Clone the repo
