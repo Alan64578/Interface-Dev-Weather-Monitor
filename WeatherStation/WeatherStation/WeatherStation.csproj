@@ -10,6 +10,10 @@
     <RootNamespace>WeatherStation</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+  </ItemGroup>
+
   <!-- Copy data folders to output directory -->
   <ItemGroup>
     <Content Include="SherkinWeatherData\**">
