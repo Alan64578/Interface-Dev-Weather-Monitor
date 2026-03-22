@@ -1,89 +1,48 @@
-# Interface Development — Weather Station Monitor
+# Weather Station Monitor
 
-**Module:** Interface Software Development | **Variant:** 16  
-**Author:** Alan O'Connell | **Student No:** R00243626  
-**Institution:** Munster Technological University
+**Module:** Interface Software Development | **Variant:** 16
+**Student:** Alan O'Connell (R00243626) | **Institution:** MTU
 
-A WPF desktop app in C# that reads and compares weather data from two Met Éireann stations — Sherkin Island and Roches Point — and plots temperature, wind speed, and rainfall on interactive charts using LiveCharts.
+WPF app in C# that loads weather data from two Met Eireann stations (Sherkin Island and Roches Point) and plots them on a LiveCharts chart for comparison.
 
-## Current status
+## Status
 
-The core functionality is working: data loading, parameter selection, and plotting both stations on a chart. The slider/range feature and differences file are still in progress. See the [progress report](docs/) for details.
+Core features working: data loading, parameter selection, dual-station plotting. Slider/range and differences file still in progress.
 
-## Screenshots
+## Screenshot
 
-![Temperature Chart](docs/screenshots/screenshot-temperature.png)
-*Temperature comparison — both stations plotted*
+![Temperature comparison](docs/Screenshots/Screenshot%202026-03-17%20001644.png)
 
-![Wind Speed Chart](docs/screenshots/screenshot-speed.png)
-*Wind Speed comparison with Range chart at Count = 8*
+## How it works
 
-## What it does
+1. **Load Data** scans the station folders, fills two ListBoxes with parameters (Temperature, Speed, Rainfall). Time files excluded.
+2. **Double-click** a parameter to read the .txt file and store readings in a `SortedDictionary<DateTime, double>`.
+3. **Plot** draws both stations as LineSeries on a CartesianChart.
+4. **Slider** adjusts a Count value from 1 to max data points.
+5. **Range** plots a subset based on Count on a second chart.
+6. **Differences file** writes per-timestamp difference between stations to a .txt file.
+7. **Menu bar** has Load Stations, Plot Stations, and Exit Application.
 
-- **Load Data** scans the `SherkinWeatherData` and `RochesWeatherData` folders and fills two ListBoxes with the available parameters (Temperature, Speed, Rainfall). Time files are excluded.
-- - **Double-clicking** a parameter in a ListBox reads the corresponding `.txt` file and pairs each time value with the parameter reading into a `SortedDictionary<DateTime, double>`.
-  - - **Plot** draws both station datasets as separate `LineSeries` on a LiveCharts `CartesianChart`, with time on the X-axis.
-    - - A **Slider** (acting as the potentiometer) adjusts a Count value from 1 to the total number of data points.
-      - - **Range** plots a subset of the data based on the current Count value on a second chart.
-        - - A **differences file** writes the per-timestamp difference between the two stations to a `.txt` file.
-          - - **Menu bar** has Load Stations, Plot Stations, and Exit Application options.
-           
-            - ## Technologies
-           
-            - | | |
-            - |---|---|
-            - | Language | C# / .NET 8 |
-            - | UI | WPF |
-            - | Charting | LiveCharts.Wpf 0.9.7 |
-            - | Data storage | `SortedDictionary<DateTime, double>` |
-            - | File I/O | `StreamReader`, `StreamWriter`, `Directory.GetFiles` |
-            - | IDE | Visual Studio 2022 |
-            - | Data | Met Éireann open observations |
-           
-            - ## Project structure
-           
-            - ```
-              Interface-Dev-Weather-Monitor/
-              ├── WeatherStationApp/
-              │   ├── MainWindow.xaml
-              │   ├── MainWindow.xaml.cs
-              │   ├── App.xaml / App.xaml.cs
-              │   ├── WeatherStationApp.csproj
-              │   ├── SherkinWeatherData/
-              │   │   ├── Sherkin Temperature.txt
-              │   │   ├── Sherkin Speed.txt
-              │   │   ├── Sherkin Rainfall.txt
-              │   │   └── Sherkin Time.txt
-              │   └── RochesWeatherData/
-              │       ├── Roches Temperature.txt
-              │       ├── Roches Speed.txt
-              │       ├── Roches Rainfall.txt
-              │       └── Roches Time.txt
-              ├── Versions/                  # older builds
-              ├── docs/
-              │   ├── progress-report.docx
-              │   ├── sherkin-island.csv
-              │   ├── roches-point.csv
-              │   └── screenshots/
-              └── README.md
-              ```
+## Tech
 
-              ## Running it
+- C# / .NET 8 / WPF
+- LiveCharts.Wpf 0.9.7
+- Visual Studio 2022
+- Data from [Met Eireann](https://www.met.ie)
 
-              ```bash
-              git clone https://github.com/Alan64578/Interface-Dev-Weather-Monitor.git
-              ```
+## Run it
 
-              1. Open `WeatherStationApp/WeatherStationApp.slnx` in Visual Studio 2022
-              2. 2. Make sure `LiveCharts.Wpf` 0.9.7 is installed via NuGet
-                 3. 3. Build and run (F5)
-                    4. 4. The `SherkinWeatherData` and `RochesWeatherData` folders need to be in the output directory alongside the executable
-                      
-                       5. ## Data source
-                      
-                       6. - [Sherkin Island observations](https://www.met.ie/latest-reports/observations/download/sherkin-island)
-                          - - [Roches Point observations](https://www.met.ie/latest-reports/observations/download/roches-point)
-                           
-                            - ## Note
-                           
-                            - AI tools were used to help format this README. All project code was written by the author.
+```
+git clone https://github.com/Alan64578/Interface-Dev-Weather-Monitor.git
+```
+
+Open `WeatherStationApp/WeatherStationApp.slnx` in Visual Studio, restore NuGet packages, build and run (F5).
+
+## Docs
+
+- [Progress report](docs/Weather%20Station%20Project%20Progress%20-%20AOC.pdf)
+- [Project brief](docs/OConnell%20Alan%20R00243626.pdf)
+
+## Note
+
+AI tools were used to format this README. All project code was written by the author.
