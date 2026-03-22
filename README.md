@@ -1,107 +1,89 @@
 # Interface Development — Weather Station Monitor
 
-A WPF desktop application written in C# that reads, parses and compares weather data from two Met Éireann stations — Sherkin Island and Roches Point — displaying temperature, wind speed, and rainfall over a 12-hour period.
+**Module:** Interface Software Development | **Variant:** 16  
+**Author:** Alan O'Connell | **Student No:** R00243626  
+**Institution:** Munster Technological University
 
----
+A WPF desktop app in C# that reads and compares weather data from two Met Éireann stations — Sherkin Island and Roches Point — and plots temperature, wind speed, and rainfall on interactive charts using LiveCharts.
 
-## Current Progress
+## Current status
 
-| Feature | Status |
-|---|---|
-| WPF layout — ListBoxes, labels, menu, buttons | ✅ Complete |
-| Load Data — scans folders, populates ListBoxes | ✅ Complete |
-| Double-click selection, Parameter label update | ✅ Complete |
-| Data extraction into SortedDictionary | ✅ Complete |
-| Plot button — LiveCharts dual-series chart | ✅ Complete |
-| Range / Count / Slider — subset chart | ⏳ Outstanding |
-| Differences file output | ⏳ Outstanding |
-| Menu item wiring + error handling | ⏳ Outstanding |
+The core functionality is working: data loading, parameter selection, and plotting both stations on a chart. The slider/range feature and differences file are still in progress. See the [progress report](docs/) for details.
 
----
+## Screenshots
 
-## Features (Completed)
+![Temperature Chart](docs/screenshots/screenshot-temperature.png)
+*Temperature comparison — both stations plotted*
 
-- Load weather data from two stations via the **[Load Data]** button
-- Scan `SherkinWeatherData` and `RochesWeatherData` folders and populate separate ListBoxes
-- Double-click a parameter in a ListBox to select it for extraction
-- Selected parameter name displayed in a label beneath each ListBox
-- Parse Time and parameter files into `SortedDictionary<DateTime, double>` for both stations
-- Plot button renders both station series on the same LiveCharts CartesianChart
-- Plot button enabled automatically once a parameter is selected in both ListBoxes
-- Menu bar with **[Load Stations]**, **[Plot Stations]**, and **[Exit Application]** options
+![Wind Speed Chart](docs/screenshots/screenshot-speed.png)
+*Wind Speed comparison with Range chart at Count = 8*
 
----
+## What it does
 
-## Technologies
+- **Load Data** scans the `SherkinWeatherData` and `RochesWeatherData` folders and fills two ListBoxes with the available parameters (Temperature, Speed, Rainfall). Time files are excluded.
+- - **Double-clicking** a parameter in a ListBox reads the corresponding `.txt` file and pairs each time value with the parameter reading into a `SortedDictionary<DateTime, double>`.
+  - - **Plot** draws both station datasets as separate `LineSeries` on a LiveCharts `CartesianChart`, with time on the X-axis.
+    - - A **Slider** (acting as the potentiometer) adjusts a Count value from 1 to the total number of data points.
+      - - **Range** plots a subset of the data based on the current Count value on a second chart.
+        - - A **differences file** writes the per-timestamp difference between the two stations to a `.txt` file.
+          - - **Menu bar** has Load Stations, Plot Stations, and Exit Application options.
+           
+            - ## Technologies
+           
+            - | | |
+            - |---|---|
+            - | Language | C# / .NET 8 |
+            - | UI | WPF |
+            - | Charting | LiveCharts.Wpf 0.9.7 |
+            - | Data storage | `SortedDictionary<DateTime, double>` |
+            - | File I/O | `StreamReader`, `StreamWriter`, `Directory.GetFiles` |
+            - | IDE | Visual Studio 2022 |
+            - | Data | Met Éireann open observations |
+           
+            - ## Project structure
+           
+            - ```
+              Interface-Dev-Weather-Monitor/
+              ├── WeatherStationApp/
+              │   ├── MainWindow.xaml
+              │   ├── MainWindow.xaml.cs
+              │   ├── App.xaml / App.xaml.cs
+              │   ├── WeatherStationApp.csproj
+              │   ├── SherkinWeatherData/
+              │   │   ├── Sherkin Temperature.txt
+              │   │   ├── Sherkin Speed.txt
+              │   │   ├── Sherkin Rainfall.txt
+              │   │   └── Sherkin Time.txt
+              │   └── RochesWeatherData/
+              │       ├── Roches Temperature.txt
+              │       ├── Roches Speed.txt
+              │       ├── Roches Rainfall.txt
+              │       └── Roches Time.txt
+              ├── Versions/                  # older builds
+              ├── docs/
+              │   ├── progress-report.docx
+              │   ├── sherkin-island.csv
+              │   ├── roches-point.csv
+              │   └── screenshots/
+              └── README.md
+              ```
 
-| Technology | Details |
-|---|---|
-| Language | C# / .NET 8 |
-| UI Framework | WPF (Windows Presentation Foundation) |
-| Charting | LiveCharts v0 (LiveCharts.Wpf 0.9.7) |
-| Data Structure | SortedDictionary\<DateTime, double\> |
-| File I/O | StreamReader, Directory.GetFiles |
-| IDE | Visual Studio 2022 |
-| Data Source | Met Éireann open observations |
+              ## Running it
 
----
+              ```bash
+              git clone https://github.com/Alan64578/Interface-Dev-Weather-Monitor.git
+              ```
 
-## Project Structure
-
-```
-Interface-Dev-Weather-Monitor/
-│
-├── WeatherStation/
-│   ├── WeatherStation.sln
-│   └── WeatherStation/
-│       ├── MainWindow.xaml
-│       ├── MainWindow.xaml.cs
-│       ├── App.xaml
-│       ├── App.xaml.cs
-│       ├── WeatherStation.csproj
-│       ├── SherkinWeatherData/
-│       │   ├── Sherkin Temperature.txt
-│       │   ├── Sherkin Speed.txt
-│       │   ├── Sherkin Rainfall.txt
-│       │   └── Sherkin Time.txt
-│       └── RochesWeatherData/
-│           ├── Roches Temperature.txt
-│           ├── Roches Speed.txt
-│           ├── Roches Rainfall.txt
-│           └── Roches Time.txt
-│
-├── docs/
-│   ├── OConnell Alan R00243626.pdf
-│   ├── Data/
-│   │   ├── sherkin-island.csv
-│   │   └── roches-point.csv
-│   └── Screenshots/
-│
-├── Versions/
-├── .gitignore
-└── README.md
-```
-
----
-
-## Running the Project
-
-1. Clone the repo
-2. Open `WeatherStation/WeatherStation.sln` in Visual Studio 2022
-3. Ensure **LiveCharts.Wpf (v0.9.7)** is installed via NuGet
-4. Build and run (F5)
-
-The `SherkinWeatherData` and `RochesWeatherData` folders are included and copy to the output directory on build.
-
----
-
-## Data Source
-
-- https://www.met.ie/latest-reports/observations/download/sherkin-island
-- https://www.met.ie/latest-reports/observations/download/roches-point
-
----
-
-## Disclaimer
-
-AI tools were used to help format and present this GitHub repository (README). All project code and implementation were written manually by the author.
+              1. Open `WeatherStationApp/WeatherStationApp.slnx` in Visual Studio 2022
+              2. 2. Make sure `LiveCharts.Wpf` 0.9.7 is installed via NuGet
+                 3. 3. Build and run (F5)
+                    4. 4. The `SherkinWeatherData` and `RochesWeatherData` folders need to be in the output directory alongside the executable
+                      
+                       5. ## Data source
+                      
+                       6. - [Sherkin Island observations](https://www.met.ie/latest-reports/observations/download/sherkin-island)
+                          - - [Roches Point observations](https://www.met.ie/latest-reports/observations/download/roches-point)
+                           
+                            - ## Note
+                           
+                            - AI tools were used to help format this README. All project code was written by the author.
