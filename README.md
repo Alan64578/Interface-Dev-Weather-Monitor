@@ -1,7 +1,7 @@
 # Weather Station Monitor
 
 **Module:** Interface Software Development
-**Student:** Alan O'Connell (R00243626)
+**Student:** Alan O'Connell 
 **Institution:** MTU
 
 WPF app in C# that loads weather data from two Met Eireann stations (Sherkin Island and Roches Point) and plots them on a LiveCharts chart for comparison.
