@@ -1,6 +1,6 @@
 # Weather Station Monitor
 
-Alan O'Connell — Interface Software Development, MTU
+Alan O'Connell, Interface Software Development, MTU
 
 WPF app in C# that loads weather data from two Met Eireann stations (Sherkin Island and Roches Point) and plots them on a LiveCharts chart for comparison. All features complete.
 
