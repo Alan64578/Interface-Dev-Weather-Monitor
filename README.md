@@ -2,7 +2,7 @@
 
 Alan O'Connell, Interface Software Development, MTU
 
-WPF app in C# that loads weather data from two Met Eireann stations (Sherkin Island and Roches Point) and plots them on a LiveCharts chart for comparison. All features complete.
+WPF app in C# that loads weather data from two Met Eireann stations (Sherkin Island and Roches Point) and plots them on a LiveCharts chart for comparison. All features complete. And Final code version found at "WeatherStation/WeatherStation".
 
 ## Screenshots
 
